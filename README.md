@@ -6,54 +6,58 @@ A simple Streamlit app that recommends movies based on a selected title. It uses
 
 ## 🚀 Features
 
-- Select a movie from a dropdown list
-- Get top 5 similar movie recommendations
-- Lightweight and easy to run locally
-- Uses `pickle` files for fast loading of movie data and similarity scores
+- Dropdown to select any movie from the dataset  
+- Recommends 5 similar movies based on cosine similarity  
+- Lightweight and fast — uses pickled data for performance  
+- Built using Streamlit, deployable on the web (e.g., Heroku)
 
 ---
 
 ## 🛠 How to Run
 
 ### 1. Clone the Repository
+
 ```bash
 git clone <your-repo-url>
 cd <project-folder>
 ```
-
 2. Ensure Required Files Exist
-Make sure the following files are in the project directory:
-
+   
+Make sure the following files are in your project directory:
 movie_dict.pkl — Contains the movie metadata dictionary
 similarity.pkl — Contains the similarity matrix
+app.py — Main application script
 
 3. Install Dependencies
 ```bash
-pip install streamlit pandas
+pip install -r requirements.txt
 ```
-
 4. Run the App
 ```bash
-streamlit run <your-script-name>.py
+streamlit run app.py
 ```
 💡 How It Works
 Loads movie metadata and similarity matrix using pickle
-Uses cosine similarity to find top 5 most similar movies
-Renders a dropdown for movie selection and displays results upon clicking "Recommend"
+Uses cosine similarity to find the top 5 most similar movies
+Renders a dropdown for movie selection and displays results when "Recommend" is clicked
 
-📁 Folder Structure
+
+🗂 Folder Structure
 ```bash
 📂 your_project/
-├── app.py                  # Main Streamlit application
-├── movie_dict.pkl          # Pickled dictionary with movie data
-├── similarity.pkl          # Pickled similarity matrix
-└── README.md               # Project description
+├── app.py                 # Streamlit application script
+├── movie_dict.pkl         # Pickled dictionary of movie metadata
+├── similarity.pkl         # Pickled similarity matrix
+├── movies.pkl             # (optional backup, unused in code)
+├── requirements.txt       # Python package dependencies
+├── Procfile               # For deploying on Heroku
+├── .gitignore             # Git ignored files
+└── README.md              # Project description
 ```
-🧠 Example
-
+🧠 Example Usage
 Select a movie like The Matrix from the dropdown
 Click "Recommend"
-You'll see 5 similar movies recommended below
+You’ll see 5 similar movies recommended below
 
 ✅ Output
 The app will show a list like:
@@ -66,15 +70,16 @@ Looper
 ```
 
 ❗ Notes
+The recommendations are based on precomputed cosine similarity scores
+Make sure .pkl files are in the same folder as app.py
+Works with any .pkl-based similarity setup (if formatted correctly)
 
-The recommendations are based on precomputed similarity scores
-You must have the .pkl files in the same folder as your .py script
-Works with any .pkl-based cosine similarity setup (if formatted correctly)
 
-📌 Dependencies
 
-streamlit
-pandas
-pickle (built-in)
+
+
+
+
+
 
 
